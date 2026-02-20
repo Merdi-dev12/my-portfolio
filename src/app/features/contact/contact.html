@@ -1,0 +1,42 @@
+<section id="contact" class="py-20 px-6 bg-black text-white rounded-t-[3rem]">
+  <div class="max-w-4xl mx-auto">
+    <h2 class="text-6xl font-bold mb-12 tracking-tighter">Démarrons un projet.</h2>
+
+    <form [formGroup]="contactForm" (ngSubmit)="onSubmit()" class="space-y-8">
+      <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
+        <input formControlName="name" placeholder="Ton Nom"
+          class="bg-transparent border-b border-white/20 py-4 focus:border-white outline-none">
+        <input formControlName="email" placeholder="Ton Email"
+          class="bg-transparent border-b border-white/20 py-4 focus:border-white outline-none">
+      </div>
+
+      <div class="space-y-4">
+        <label class="text-sm uppercase tracking-widest opacity-50">Type de projet</label>
+        <div class="flex flex-wrap gap-4">
+          @for (type of ['Web App', 'Mobile', 'Web3', 'Design']; track type) {
+          <button type="button" (click)="contactForm.patchValue({projectType: type})"
+            [class.bg-white]="contactForm.value.projectType === type"
+            [class.text-black]="contactForm.value.projectType === type"
+            class="px-6 py-2 border border-white/20 rounded-full transition">
+            {{ type }}
+          </button>
+          }
+        </div>
+      </div>
+
+      <div class="space-y-4">
+        <label class="text-sm uppercase tracking-widest opacity-50">Budget souhaité : {{ contactForm.value.budget
+          }}$</label>
+        <input title="Budget" type="range" formControlName="budget" min="1000" max="50000" step="1000" class="w-full accent-white">
+      </div>
+
+      <textarea formControlName="message" placeholder="Parle-moi de ton idée..." rows="4"
+        class="w-full bg-transparent border-b border-white/20 py-4 focus:border-white outline-none"></textarea>
+
+      <button type="submit"
+        class="w-full py-6 bg-white text-black font-bold rounded-2xl hover:bg-gray-200 transition text-xl">
+        Envoyer le message
+      </button>
+    </form>
+  </div>
+</section>

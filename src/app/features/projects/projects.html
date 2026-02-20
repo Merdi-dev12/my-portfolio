@@ -1,0 +1,29 @@
+<section class="min-h-screen py-20 px-6 bg-[#f8f8f8]" id="projects">
+  <div class="max-w-7xl mx-auto">
+    <h2 class="text-5xl font-bold mb-12 tracking-tighter overflow-hidden">
+      <span class="title-reveal inline-block">Projets Sélectionnés</span>
+    </h2>
+
+    <div class="grid grid-cols-1 md:grid-cols-4 gap-6" id="project-grid">
+      @for (project of projects(); track project.title) {
+      <div
+        class="project-card group relative bg-white rounded-3xl overflow-hidden shadow-sm hover:shadow-xl transition-all duration-500 cursor-pointer"
+        [class.md:col-span-2]="project.featured" [class.md:row-span-2]="project.featured">
+        <div class="aspect-square md:aspect-auto h-full min-h-[300px] relative">
+          <img title="img" [src]="project.image" [alt]="project.title"
+            class="object-cover w-full h-full group-hover:scale-105 transition-transform duration-700">
+
+          <div
+            class="absolute inset-0 bg-black/20 group-hover:bg-black/40 transition-colors p-8 flex flex-col justify-end text-white">
+            <span
+              class="text-sm font-medium uppercase tracking-widest opacity-0 group-hover:opacity-100 translate-y-4 group-hover:translate-y-0 transition-all">
+              {{ project.category }}
+            </span>
+            <h3 class="text-2xl font-bold mt-2">{{ project.title }}</h3>
+          </div>
+        </div>
+      </div>
+      }
+    </div>
+  </div>
+</section>

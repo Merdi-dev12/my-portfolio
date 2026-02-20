@@ -1,0 +1,31 @@
+<section id="experience" class="py-24 bg-[#0a0a0a] text-white">
+  <div class="max-w-6xl mx-auto px-6">
+    <h2 class="text-4xl md:text-6xl font-black mb-16 tracking-tighter">PARCOURS<span class="text-indigo-500">.</span>
+    </h2>
+
+    <div class="space-y-12">
+      @for (exp of experiences(); track exp.company) {
+      <div
+        class="exp-card group relative grid grid-cols-1 md:grid-cols-4 gap-4 p-8 rounded-3xl border border-white/5 hover:bg-white/5 transition-all duration-500">
+
+        <div class="text-indigo-400 font-mono text-xl">{{ exp.period }}</div>
+
+        <div class="md:col-span-2">
+          <h3 class="text-2xl font-bold group-hover:text-indigo-400 transition-colors">{{ exp.role }}</h3>
+          <p class="text-gray-400 mt-2 font-medium">{{ exp.company }}</p>
+          <p class="text-gray-500 mt-4 text-sm leading-relaxed">{{ exp.desc }}</p>
+        </div>
+
+        <div class="flex flex-wrap gap-2 content-start">
+          @for (tag of exp.tags; track tag) {
+          <span
+            class="px-3 py-1 bg-white/5 rounded-full text-[10px] uppercase tracking-widest border border-white/10 italic">
+            {{ tag }}
+          </span>
+          }
+        </div>
+      </div>
+      }
+    </div>
+  </div>
+</section>
